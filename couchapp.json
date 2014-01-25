@@ -1,0 +1,5 @@
+{
+    "name": "StaticCouchBlog",
+    "description": "A web blog system to create, edit, preview and publish posts. The application is performance orienteted for the reads - it serves them finally as static files.",
+    "version": "0.0.1"
+}
