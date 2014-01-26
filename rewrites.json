@@ -1,0 +1,7 @@
+[
+  {
+    "to": "../../:pid",
+    "from": "post/:pid",
+    "method": "PUT"
+  }
+]
