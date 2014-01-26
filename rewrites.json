@@ -13,5 +13,15 @@
     "to": "_update/publish/:pid",
     "from": "post/:pid/publish",
     "method": "POST"
+  },
+  {
+    "to": "../../:pid/:file",
+    "from": "post/:pid/:file",
+    "method": "GET"
+  },
+  {
+    "to": "../../:pid/static.html",
+    "from": "post/:pid",
+    "method": "GET"
   }
 ]
