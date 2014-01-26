@@ -25,6 +25,7 @@ function (doc, req) {
 		newdoc = doc
 		newdoc.publish_at = new Date().toISOString()
 		newdoc._rev = rev
+		newdoc._attachments = newdoc._attachments || {}
 		newdoc._attachments['static.html'] = {
       'content_type':'text\/html',
       'data': html
