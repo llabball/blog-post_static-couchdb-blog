@@ -3,5 +3,10 @@
     "to": "../../:pid",
     "from": "post/:pid",
     "method": "PUT"
-  }
+  },
+  {
+		"to": "_show/preview/:pid",
+		"from": "post/:pid/preview",
+		"method": "GET"
+	}
 ]
