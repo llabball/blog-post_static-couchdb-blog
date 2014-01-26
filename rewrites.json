@@ -8,5 +8,10 @@
 		"to": "_show/preview/:pid",
 		"from": "post/:pid/preview",
 		"method": "GET"
-	}
+	},
+  {
+    "to": "_update/publish/:pid",
+    "from": "post/:pid/publish",
+    "method": "POST"
+  }
 ]

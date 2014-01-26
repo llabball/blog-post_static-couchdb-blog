@@ -1,0 +1,57 @@
+<div id="uploadform">
+	<hr/>
+	<div id="note"></div>
+	<input type="submit" id="publish" value="publish" onclick="publishPost()">
+	<script type="text/javascript">
+
+		function upload (url, data, errorcallback, successcallback) {
+			var r = new XMLHttpRequest()
+			r.open('POST', url, true)
+			r.setRequestHeader('Content-Type', 'text/plain')
+			r.onreadystatechange = function () {
+				if (r.readyState === 4) {
+					if(r.status >= 400) {
+						if (errorcallback) errorcallback(r)
+						return
+					} else {
+						if (successcallback) successcallback(r)
+					}
+				}
+			}
+			r.send(data)
+		}
+
+		function setButtonValue (value, disabled, message) {
+			var button = document.querySelector('#publish')
+				,	note = document.querySelector('#note')
+
+			button.value = value
+
+			note.innerHTML = message || ''
+
+			if (!disabled)
+				button.removeAttribute('disabled')
+			else
+				button.setAttribute('disabled', 'disabled')
+		}
+
+		function publishPost () {
+			var html = document.documentElement.cloneNode(true)
+				, form = html.querySelector('#uploadform')
+				, onerror, onsuccess
+			
+			onerror = function (r) {
+				setButtonValue('fail. Try Again?', false, JSON.parse(r.response).reason)
+			}
+			onsuccess = function (r) {
+				window.location.href =  './'
+			}
+
+			setButtonValue('uploading attachment...', true)
+
+			form.parentNode.removeChild(form)
+			
+			upload('./publish?rev={{rev}}', btoa(html.outerHTML), onerror, onsuccess)
+		}
+	</script>
+</div>
